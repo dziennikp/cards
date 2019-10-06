@@ -1,15 +1,13 @@
-import XCTest
 @testable import Cards
+import XCTest
 
 final class CardsTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Cards().text, "Hello, World!")
+    func testCardsGenerating() {
+        let deckManager = DeckManager()
+        XCTAssert(deckManager.deck.cards.count == 52)
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testCardsGenerating", testCardsGenerating),
     ]
 }
