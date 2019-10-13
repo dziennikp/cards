@@ -13,16 +13,23 @@ public struct Deck {
 
 public class DeckManager {
     var deck: Deck
-
-    init() {
+    private var currentIndex = 0
+    public init() {
         deck = Deck(cards: Suit.allCases.flatMap { suit in
             Rank.allCases.map { rank in
                 Card(rank: rank, suit: suit)
             }
         })
+        shuffle()
     }
-    
-    func shuffle() {
+
+    public func nextCard() -> Card {
+        let card = deck.cards[currentIndex]
+        currentIndex += 1
+        return card
+    }
+
+    public func shuffle() {
         deck.cards.shuffle()
     }
 }
